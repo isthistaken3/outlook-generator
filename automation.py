@@ -1,4 +1,5 @@
 from playwright.sync_api import sync_playwright
+import random
 
 usernamefile = "usernames.csv"
 def username(usernamefile):
@@ -43,7 +44,7 @@ def firstname(firstnamefile):
     if lines:
         firstname_value = lines[0].strip()
 
-        with open(passwordfile, "w", encoding="utf-8") as file:
+        with open(firstnamefile, "w", encoding="utf-8") as file:
             file.writelines(lines[1:])
 
         return firstname_value
@@ -89,13 +90,21 @@ with sync_playwright() as p:
     page.press("#Password", "Enter")
     print(" Successfully entered username and password!")
     
+    #enter name
     page.fill("#firstNameInput", textbox_firstname)
     page.fill("#lastNameInput", textbox_lastname)
-    print("Name entered!")
     page.press("#lastNameInput", "Enter")
 
     page.fill("#firstNameInput", "utrehkjdfw")
     page.fill("#lastNameInput", "etigfuhjsk")
     print("Name entered!")
     page.press("#lastNameInput", "Enter")
+
+    #enter bday
+    random_day = str(random.randint(1, 31))
+    random_year = str(random.randint(1979, 2005))
+    page.select_option("#BirthMonth", label="May")
+    page.select_option("#BirthDay", random_day)
+    page.fill("#BirthYear", random_year)
+    page.press("#BirthYear", "Enter")
     page.pause()
