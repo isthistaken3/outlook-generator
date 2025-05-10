@@ -1,6 +1,7 @@
 from playwright.sync_api import sync_playwright
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 usernamefile = "usernames.csv"
 def username(usernamefile):
     with open(usernamefile, "r", encoding="utf-8") as file:
@@ -72,6 +73,8 @@ textbox_lastname = lastname(lastnamefile)
 
 =======
 >>>>>>> parent of 2a3f961 (update list deletion)
+=======
+>>>>>>> parent of 2a3f961 (update list deletion)
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=False)  # Launch browser (set to False for visible window)
     page = browser.new_page()
@@ -93,15 +96,21 @@ with sync_playwright() as p:
     print(" Successfully entered username and password!")
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     page.fill("#firstNameInput", textbox_firstname)
     page.fill("#lastNameInput", textbox_lastname)
     print("Name entered!")
     page.press("#lastNameInput", "Enter")
 
 =======
+=======
+>>>>>>> parent of 2a3f961 (update list deletion)
     page.fill("#firstNameInput", "utrehkjdfw")
     page.fill("#lastNameInput", "etigfuhjsk")
     print("Name entered!")
     page.press("#lastNameInput", "Enter")
+<<<<<<< HEAD
+>>>>>>> parent of 2a3f961 (update list deletion)
+=======
 >>>>>>> parent of 2a3f961 (update list deletion)
     page.pause()
