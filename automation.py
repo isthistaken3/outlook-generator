@@ -1,6 +1,6 @@
-import csv
 from playwright.sync_api import sync_playwright
 
+<<<<<<< HEAD
 usernamefile = "usernames.csv"
 def username(usernamefile):
     with open(usernamefile, "r", encoding="utf-8") as file:
@@ -70,29 +70,38 @@ def lastname(lastnamefile):
         return None
 textbox_lastname = lastname(lastnamefile)
 
+=======
+>>>>>>> parent of 2a3f961 (update list deletion)
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=False) # Launch browser (set to False for visible window)
+    browser = p.chromium.launch(headless=False)  # Launch browser (set to False for visible window)
     page = browser.new_page()
     
     # Open the sign-up page
     page.goto("https://signup.live.com")
     
     # Type username into the input field
-    page.fill("#usernameInput", textbox_username)
+    page.fill("#usernameInput", "test45ertuihsdj@outlook.com")
     
     # Press enter to continue
     page.press("#usernameInput", "Enter")
     
     # Wait for password field to load (modify selector if needed)
     page.wait_for_selector("#Password")
-    page.fill("#Password", textbox_password)
+    page.fill("#Password", "SuperSecurePasswo*#$rd123")
     
     page.press("#Password", "Enter")
     print(" Successfully entered username and password!")
     
+<<<<<<< HEAD
     page.fill("#firstNameInput", textbox_firstname)
     page.fill("#lastNameInput", textbox_lastname)
     print("Name entered!")
     page.press("#lastNameInput", "Enter")
 
+=======
+    page.fill("#firstNameInput", "utrehkjdfw")
+    page.fill("#lastNameInput", "etigfuhjsk")
+    print("Name entered!")
+    page.press("#lastNameInput", "Enter")
+>>>>>>> parent of 2a3f961 (update list deletion)
     page.pause()
