@@ -1,5 +1,12 @@
+import requests
 from playwright.sync_api import sync_playwright
+import nopecha
 import random
+
+#API KEY HERE!! ####################
+api_key = "sm88th2ak3nmnut5"
+###################################
+
 
 usernamefile = "usernames.csv"
 def username(usernamefile):
@@ -71,7 +78,7 @@ def lastname(lastnamefile):
 textbox_lastname = lastname(lastnamefile)
 
 with sync_playwright() as p:
-    browser = p.chromium.launch(headless=False)  # Launch browser (set to False for visible window)
+    browser = p.chromium.launch_persistent_context("user_data", headless=False)  # Launch browser (set to False for visible window)
     page = browser.new_page()
     
     # Open the sign-up page
@@ -107,4 +114,5 @@ with sync_playwright() as p:
     page.select_option("#BirthDay", random_day)
     page.fill("#BirthYear", random_year)
     page.press("#BirthYear", "Enter")
+
     page.pause()
