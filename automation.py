@@ -8,14 +8,14 @@ with sync_playwright() as p:
     page.goto("https://signup.live.com")
     
     # Type username into the input field
-    page.fill("#usernameInput", "testuser@example.com")
+    page.fill("#usernameInput", "test45ertuihsdj@outlook.com")
     
     # Press enter to continue
     page.press("#usernameInput", "Enter")
     
     # Wait for password field to load (modify selector if needed)
     page.wait_for_selector("#Password")
-    page.fill("#Password", "SuperSecurePassword123")
+    page.fill("#Password", "SuperSecurePasswo*#$rd123")
     
     print("✅ Successfully entered username and password!")
     
