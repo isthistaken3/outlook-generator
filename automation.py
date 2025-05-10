@@ -17,6 +17,11 @@ with sync_playwright() as p:
     page.wait_for_selector("#Password")
     page.fill("#Password", "SuperSecurePasswo*#$rd123")
     
-    print("✅ Successfully entered username and password!")
+    page.press("#Password", "Enter")
+    print(" Successfully entered username and password!")
     
-    browser.close()
+    page.fill("#firstNameInput", "utrehkjdfw")
+    page.fill("#lastNameInput", "etigfuhjsk")
+    print("Name entered!")
+    page.press("#lastNameInput", "Enter")
+    page.pause()
