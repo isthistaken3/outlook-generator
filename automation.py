@@ -36,6 +36,39 @@ def password(passwordfile):
         return None
 textbox_password = password(passwordfile)
 
+firstnamefile = "first_name.csv"
+def firstname(firstnamefile):
+    with open(firstnamefile, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+
+    if lines:
+        firstname_value = lines[0].strip()
+
+        with open(passwordfile, "w", encoding="utf-8") as file:
+            file.writelines(lines[1:])
+
+        return firstname_value
+    else:
+        print("File is empty!")
+        return None
+textbox_firstname = firstname(firstnamefile)
+
+lastnamefile = "last_name.csv"
+def lastname(lastnamefile):
+    with open(lastnamefile, "r", encoding="utf-8") as file:
+        lines = file.readlines()
+
+    if lines:
+        lastname_value = lines[0].strip()
+
+        with open(lastnamefile, "w", encoding="utf-8") as file:
+            file.writelines(lines[1:])
+
+        return lastname_value
+    else:
+        print("File is empty!")
+        return None
+textbox_lastname = lastname(lastnamefile)
 
 with sync_playwright() as p:
     browser = p.chromium.launch(headless=False) # Launch browser (set to False for visible window)
@@ -57,8 +90,9 @@ with sync_playwright() as p:
     page.press("#Password", "Enter")
     print(" Successfully entered username and password!")
     
-    page.fill("#firstNameInput", "utrehkjdfw") 
-    page.fill("#lastNameInput", "etigfuhjsk") 
-    print("Name entered!") 
-    page.press("#lastNameInput", "Enter") 
+    page.fill("#firstNameInput", textbox_firstname)
+    page.fill("#lastNameInput", textbox_lastname)
+    print("Name entered!")
+    page.press("#lastNameInput", "Enter")
+
     page.pause()
